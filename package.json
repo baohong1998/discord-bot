@@ -1,0 +1,22 @@
+{
+  "name": "discord-bot",
+  "version": "1.0.0",
+  "description": "bot for discord",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/baohong1998/discord-bot.git"
+  },
+  "author": "Bao Hong",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/baohong1998/discord-bot/issues"
+  },
+  "homepage": "https://github.com/baohong1998/discord-bot#readme",
+  "dependencies": {
+    "dblapi.js": "^2.3.0"
+  }
+}
