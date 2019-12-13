@@ -1,6 +1,7 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
 const BotWork = require("./methods");
+var http = require("http");
 require("dotenv").config();
 client.on("ready", () => {
   console.log("bot is ready");
@@ -98,3 +99,6 @@ client.on("message", message => {
     });
 });
 client.login(process.env.DC_TOKEN);
+http.createServer().listen(process.env.PORT || 3000, () => {
+  console.log("Server started");
+});
