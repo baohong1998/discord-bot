@@ -15,15 +15,51 @@ class BotWork {
     }
     return newStr;
   }
-  static async getMockSponge(str) {
-    const preStr = this.mockString(str);
-    console.log(preStr);
-    const box = [{ text: preStr, color: "#fff" }];
+  static async getMemeList() {
+    const memes = await axios
+      .get(process.env.IMGFLIP_GETMEMES)
+      .then(res => {
+        if (res.data.success) {
+          var embedlist = { title: "Top 25 memes", fields: [] };
+          const memes = res.data.data.memes;
+          for (var i = 0; i < memes.length; i++) {
+            embedlist.fields.push({
+              name: i + 1,
+              value: memes[i].name,
+              template_id: memes[i].id
+            });
+          }
+          return embedlist;
+        }
+      })
+      .catch(err => {
+        throw err;
+      });
+    return memes;
+  }
+  static async getMemeName(id) {
+    const memeList = await this.getMemeList();
+    return memeList.fields[id - 1].value;
+  }
+  static async getGeneratedMeme(id, str1, str2, str3, str4, str5, isMock) {
+    const firstStr = isMock ? this.mockString(str1) : str1;
+    const secondStr = isMock ? this.mockString(str2) : str2;
+    const thirdStr = isMock ? this.mockString(str3) : str3;
+    const fourthStr = isMock ? this.mockString(str4) : str4;
+    const fifthStr = isMock ? this.mockString(str5) : str5;
+
     const formData = new FormData();
-    formData.append("template_id", process.env.SPONGE_ID);
+    const memeList = await this.getMemeList();
+    console.log(memeList);
+    const template_id = memeList.fields[id - 1].template_id;
+    formData.append("template_id", template_id);
     formData.append("username", process.env.IMGFLIP_USERNAME);
     formData.append("password", process.env.IMGFLIP_PASSWORD);
-    formData.append("boxes[0][text]", preStr);
+    formData.append("boxes[0][text]", firstStr);
+    formData.append("boxes[1][text]", secondStr);
+    formData.append("boxes[2][text]", thirdStr);
+    formData.append("boxes[3][text]", fourthStr);
+    formData.append("boxes[4][text]", fifthStr);
 
     const generatedMeme = await axios
       .post(process.env.IMGFLIP_URL, formData, {
