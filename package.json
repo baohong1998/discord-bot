@@ -2,9 +2,11 @@
   "name": "discord-bot",
   "version": "1.0.0",
   "description": "bot for discord",
-  "main": "index.js",
+  "main": "bot.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "pm2 start bot.js",
+    "list": "pm2 list"
   },
   "repository": {
     "type": "git",
@@ -21,6 +23,7 @@
     "dblapi.js": "^2.3.0",
     "discord.js": "^11.5.1",
     "dotenv": "^8.2.0",
-    "form-data": "^3.0.0"
+    "form-data": "^3.0.0",
+    "pm2": "^4.2.1"
   }
 }
