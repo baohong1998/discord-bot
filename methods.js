@@ -15,6 +15,27 @@ class BotWork {
     }
     return newStr;
   }
+  static getHelpList() {
+    const listCmd = { name: "-l", value: "generate a list of top memes" };
+    const genCmd = {
+      name: "Generic format",
+      value: "!meme id text -t text -t text"
+    };
+    const numCmd = { name: "id", value: "a number from 1-100 (require)" };
+    const lineCmd = {
+      name: "-t",
+      value: "entering new box/line of text in the template (max 5 lines)"
+    };
+    const randCmd = {
+      name: "-m",
+      value: "put this at the end to randomize upper and lower case"
+    };
+    const helpList = {
+      title: "Command List",
+      fields: [listCmd, genCmd, numCmd, lineCmd, randCmd]
+    };
+    return helpList;
+  }
   static async getMemeList() {
     const memes = await axios
       .get(process.env.IMGFLIP_GETMEMES)
