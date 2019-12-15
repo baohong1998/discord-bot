@@ -26,7 +26,8 @@ class BotWork {
             embedlist.fields.push({
               name: i + 1,
               value: memes[i].name,
-              template_id: memes[i].id
+              template_id: memes[i].id,
+              url: memes[i].url
             });
           }
           return embedlist;
@@ -39,7 +40,7 @@ class BotWork {
   }
   static async getMemeName(id) {
     const memeList = await this.getMemeList();
-    return memeList.fields[id - 1].value;
+    return memeList.fields[id - 1];
   }
   static async getGeneratedMeme(id, str1, str2, str3, str4, str5, isMock) {
     const firstStr = isMock ? this.mockString(str1) : str1;

@@ -45,35 +45,38 @@ client.on("message", message => {
   if (content.length <= 0) {
     BotWork.getMemeName(id)
       .then(res => {
-        message.channel.send("Meme name: " + res);
+        message.channel.send("Meme name: " + res.value).then(() => {
+          const attach = new Discord.Attachment(res.url);
+          message.channel.send(attach);
+        });
       })
       .catch(err => {
         throw err;
       });
     return;
   }
-  if (content[0] === "-t1") {
+  if (content[0] === "-t") {
     content.shift();
   }
-  while (content.length > 0 && content[0] !== "-t2" && content[0] !== "-m") {
+  while (content.length > 0 && content[0] !== "-t" && content[0] !== "-m") {
     firstArr.push(content.shift());
   }
-  if (content.length > 0 && content[0] === "-t2") {
+  if (content.length > 0 && content[0] === "-t") {
     content.shift();
   }
-  while (content.length > 0 && content[0] !== "-t3" && content[0] !== "-m")
+  while (content.length > 0 && content[0] !== "-t" && content[0] !== "-m")
     secondArr.push(content.shift());
-  if (content.length > 0 && content[0] === "-t3") {
+  if (content.length > 0 && content[0] === "-t") {
     content.shift();
   }
-  while (content.length > 0 && content[0] !== "-t4" && content[0] !== "-m")
+  while (content.length > 0 && content[0] !== "-t" && content[0] !== "-m")
     thirdArr.push(content.shift());
-  if (content.length > 0 && content[0] === "-t4") {
+  if (content.length > 0 && content[0] === "-t") {
     content.shift();
   }
-  while (content.length > 0 && content[0] !== "-t5" && content[0] !== "-m")
+  while (content.length > 0 && content[0] !== "-t" && content[0] !== "-m")
     fourthArr.push(content.shift());
-  if (content.length > 0 && content[0] === "-t5") {
+  if (content.length > 0 && content[0] === "-t") {
     content.shift();
   }
   while (content.length > 0 && content[0] !== "-m")
