@@ -19,7 +19,7 @@ client.on("message", message => {
   if (content[0] === "-h") {
     //send help
     message.channel.send(
-      "-l for a list of top 100 memes\n id then follow by\n-t for first line of text\n-b for second line\nadd -m at the end to randomly set uppercase and lowercase"
+      "-l for a list of top 100 memes\n id then follow by\n-c for first line of text\n-b for second line\nadd -m at the end to randomly set uppercase and lowercase"
     );
     return;
   }
@@ -55,28 +55,28 @@ client.on("message", message => {
       });
     return;
   }
-  if (content[0] === "-t") {
+  if (content[0] === "-c") {
     content.shift();
   }
-  while (content.length > 0 && content[0] !== "-t" && content[0] !== "-m") {
+  while (content.length > 0 && content[0] !== "-c" && content[0] !== "-m") {
     firstArr.push(content.shift());
   }
-  if (content.length > 0 && content[0] === "-t") {
+  if (content.length > 0 && content[0] === "-c") {
     content.shift();
   }
-  while (content.length > 0 && content[0] !== "-t" && content[0] !== "-m")
+  while (content.length > 0 && content[0] !== "-c" && content[0] !== "-m")
     secondArr.push(content.shift());
-  if (content.length > 0 && content[0] === "-t") {
+  if (content.length > 0 && content[0] === "-c") {
     content.shift();
   }
-  while (content.length > 0 && content[0] !== "-t" && content[0] !== "-m")
+  while (content.length > 0 && content[0] !== "-c" && content[0] !== "-m")
     thirdArr.push(content.shift());
-  if (content.length > 0 && content[0] === "-t") {
+  if (content.length > 0 && content[0] === "-c") {
     content.shift();
   }
-  while (content.length > 0 && content[0] !== "-t" && content[0] !== "-m")
+  while (content.length > 0 && content[0] !== "-c" && content[0] !== "-m")
     fourthArr.push(content.shift());
-  if (content.length > 0 && content[0] === "-t") {
+  if (content.length > 0 && content[0] === "-c") {
     content.shift();
   }
   while (content.length > 0 && content[0] !== "-m")
