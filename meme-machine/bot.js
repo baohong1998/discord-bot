@@ -99,7 +99,7 @@ client.on("message", message => {
       throw err;
     });
 });
-client.login(process.env.DC_TOKEN);
+client.login(process.env.MEMEBOT_TOKEN);
 http.createServer().listen(process.env.PORT || 3000, () => {
   console.log("Server started");
 });
