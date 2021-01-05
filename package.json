@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/baohong1998/discord-bot#readme",
   "dependencies": {
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "dblapi.js": "^2.3.0",
     "discord.js": "^11.5.1",
     "dotenv": "^8.2.0",
